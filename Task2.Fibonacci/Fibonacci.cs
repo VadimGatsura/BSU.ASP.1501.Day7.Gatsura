@@ -9,12 +9,12 @@ namespace Task2.Fibonacci {
         public static IEnumerable<int> GetSequence(int amount) {
             if(amount <= 0)
                 throw new ArgumentException(nameof(amount));
-            int[] array = {0, 1, 0};
+            int current = 0, previous = 1;
             
             for(int i = 0; i < amount; i++) {
-                yield return array[2];
-                array[2] += array[1];
-                array[1] = array[2] - array[1];
+                yield return current;
+                current += previous;
+                previous = current - previous;
             }
         }
     }
